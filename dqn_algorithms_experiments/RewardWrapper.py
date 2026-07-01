@@ -11,4 +11,5 @@ class DistancePenaltyWrapper(gym.Wrapper):
         x, y = obs[0], obs[1]
         distance = np.sqrt(x**2 + y**2)
         shaped_reward = reward - self.penalty_weight * distance
+        info['original_reward'] = reward
         return obs, shaped_reward, terminated, truncated, info
